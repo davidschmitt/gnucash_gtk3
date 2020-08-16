@@ -87,32 +87,85 @@ gnc-id-header {
 }
 
 .gnc-class-register-foreground {
-  color: @fg_color;
+  color: inherit;
 }
 
 /* Register cursor font setting */
 gnc-id-cursor {
   background-color: @bg_highlight;
   color: @fg_highlight;
-  outline-width: 1px;
-  outline-color: @fg_color;
-  border-width: 1px;
-}
-
-gnc-id-cursor entry {
-  background-color: @bg_highlight;
-  color: @fg_highlight;
-  outline-width: 1px;
-  outline-color: @fg_highlight;
-  border-width: 1px;
   border-color: @fg_highlight;
 }
 
-gnc-id-cursor button {
+gnc-id-cursor entry {
+  background-color: inherit;
+  color: inherit;
+  border-color: inherit;
   border-width: 1px;
-  border-color: @fg_color;
-  background-color: @bg_highlight;
+}
+
+gnc-id-cursor entry undershoot {
+  background-color: inherit;
+  color: inherit;
+}
+
+selection {
+  background-color: @fg_color;
+  color: @bg_color;
+}
+
+messagedialog box {
+}
+
+button {
+  /* Clear button image imposed by GTK theme */
   background-image: none;
+  border-width: 3px;
+  border-style: solid;
+  border-color: mix (@violet, @bg_color, 0.5);
+}
+
+button:hover {
+  border-color: @violet;
+}
+
+button:active {
+  border-color: mix (@violet, @fg_highlight, 0.5);
+}
+
+check {
+  background-image: none;
+  color: @bg_color;
+  background-color: mix (@violet, @bg_color, 0.5);
+}
+
+check:hover {
+  background-color: @violet;
+}
+
+check:checked {
+  background-color: @violet;
+}
+
+gnc-id-cursor widget {
+  color: inherit;
+  background-color: inherit;
+  border-color: inherit;
+}
+
+/** This doesn't do anything, but reminds me how GTK specific properties are suppposed to work. */
+GtkEntry  {
+  -gtkwidget-focus-line-width: 0;
+  -gtkentry-inner-border: 0;
+  -gtkentry-has-frame: false;
+  -gtkentry-separator-height: 0;
+}
+
+gnc-id-cursor button {
+  color: inherit;
+  background-color: inherit;
+  border-color: inherit;
+  border-width: 1px;
 }
 
 /* Register sheet calendar */
@@ -130,7 +183,7 @@ gnc-id-sheet calendar {
 }
 
 .gnc-class-register-primary:disabled {
-  color: mix (@green, @bg_color, 0.2);
+  color: mix (@green, @bg_color, 0.5);
 }
 
 .gnc-class-register-secondary {
@@ -138,7 +191,7 @@ gnc-id-sheet calendar {
 }
 
 .gnc-class-register-secondary:disabled {
-  color: mix (@blue, @bg_color, 0.2);
+  color: mix (@blue, @bg_color, 0.5);
 }
 
 .gnc-class-register-split {
@@ -146,31 +199,23 @@ gnc-id-sheet calendar {
 }
 
 .gnc-class-register-split:disabled {
-  color: mix (@fg_color, @bg_color, 0.2);
+  color: mix (@fg_color, @bg_color, 0.5);
 }
 
 .gnc-class-register-cursor {
   background-color: @bg_highlight;
-}
-
-gnc-id-sheet-list {
-  border-width: 1px;
-  border-color: @fg_highlight;
+  color: @fg_highlight;
 }
 
 gnc-id-sheet-list treeview {
   background-color: @bg_highlight;
   color: @fg_highlight;
-  border-width: 0px;
 }
 
 gnc-id-sheet-list treeview:hover {
-  outline-style: solid;
-  outline-width: 1px;
-  outline-color: @fg_color;
   border-style: solid;
   border-width: 1px;
-  border-color: @fg_color;
+  border-color: @fg_highlight;
   background-color: @bg_color;
 }
 
@@ -181,6 +226,7 @@ gnc-id-sheet-list treeview:selected {
 /* Toolbar Button size and spacing */
 toolbar {
   background-color: @bg_highlight;
+  color: @fg_highlight;
 }
 
 /* Toolbar font size, 0 to remove text */
@@ -191,8 +237,6 @@ toolbar toolbutton label {
 toolbar toolbutton button {
   padding-left: 4px;
   padding-right: 4px;
-  color: @bg_highlight;
-  background-color: @bg_highlight;
 }
 
 toolbar toolbutton label {
@@ -290,19 +334,22 @@ statusbar label {
 }
 
 .gnc-class-credits treeview:selected {
-  color: @orange;
+  background-color: @bg_highlight;
+  color: @fg_highlight;
 }
 
 .gnc-class-debits treeview {
 }
 
 .gnc-class-debits treeview:selected {
-  color: @orange;
+  background-color: @bg_highlight;
+  color: @fg_highlight;
 }
 
 /* Highlight Text */
 .gnc-class-highlight {
   background-color: @bg_highlight;
+  color: @fg_highlight;
 }
 
 /* Summary bar */
@@ -326,32 +373,40 @@ statusbar label {
   color: @fg_color;
   background-color: @bg_color;
   border-color: @fg_color;
+  outline-color: @fg_color;
   outline-width: 0px;
   border-width: 0px;
   /* font: 12px arial; */
 }
 
-#gnc-id-main-window notebook {
-  color: @fg_color;
-  background-color: @bg_color;
-  border-color: @fg_color;
-  outline-width: 0px;
-  border-width: 0px;
-}
+/* GTK doesn't support attribute selectors so can't use things like :not([disable]) */
 
 #gnc-id-main-window menubar {
-  color: @fg_highlight;
+  color: @fg_color;
   background-color: @bg_highlight;
   outline-width: 0px;
   border-width: 0px;
-}
-
-#gnc-id-main-window menubar menuitem {
-  color: @fg_highlight;
-  background-color: @bg_highlight;
 }
 
 #gnc-id-main-window menubar menuitem label {
+  background-color: inherit;
+  color: inherit;
+}
+
+#gnc-id-main-window menubar menuitem label accelerator {
+  background-color: inherit;
+  color: inherit;
+}
+
+#gnc-id-main-window menubar menuitem:disabled {
+  color: mix (@fg_color, @bg_color, 0.5);
+}
+
+#gnc-id-main-window menubar menuitem:hover {
+  background-color: @bg_color;
   color: @fg_highlight;
+}
+
+#gnc-id-main-window menubar menuitem {
   background-color: @bg_highlight;
 }
