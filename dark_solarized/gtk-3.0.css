@@ -207,6 +207,25 @@ gnc-id-sheet calendar {
   color: @fg_highlight;
 }
 
+#gnc-id-account-tree:hover {
+  /* Why doesn't this apply?  color applies just fine... */
+  background-color: @bg_highlight;
+}
+
+treeview {
+  background-color: @bg_color;
+  color: @fg_color;
+}
+
+treeview:hover {
+  background-color: @bg_highlight;
+  color: @fg_highlight;
+}
+
+treeview:selected {
+  color: @yellow;
+}
+
 gnc-id-sheet-list treeview {
   background-color: @bg_highlight;
   color: @fg_highlight;
@@ -219,9 +238,11 @@ gnc-id-sheet-list treeview:hover {
   background-color: @bg_color;
 }
 
+/*
 gnc-id-sheet-list treeview:selected {
-  color: @orange;
+  color: @yellow;
 }
+*/
 
 /* Toolbar Button size and spacing */
 toolbar {
