@@ -127,6 +127,12 @@ button {
 
 button:hover {
   border-color: @violet;
+  background-color: @bg_highlight;
+}
+
+button:hover box label {
+  background-color: inherit;
+  color: @fg_highlight;
 }
 
 button:active {
@@ -409,25 +415,55 @@ statusbar label {
   border-width: 0px;
 }
 
-#gnc-id-main-window menubar menuitem label {
+menuitem label {
   background-color: inherit;
   color: inherit;
 }
 
-#gnc-id-main-window menubar menuitem label accelerator {
+menuitem label accelerator {
   background-color: inherit;
   color: inherit;
 }
 
-#gnc-id-main-window menubar menuitem:disabled {
+menuitem:disabled {
   color: mix (@fg_color, @bg_color, 0.5);
 }
 
-#gnc-id-main-window menubar menuitem:hover {
+menuitem:hover {
   background-color: @bg_color;
+  color: inherit;
+}
+
+menuitem {
+  background-color: @bg_highlight;
   color: @fg_highlight;
 }
 
-#gnc-id-main-window menubar menuitem {
+/*
+*:focus {
+  background-color: @bg_highlight;
+  color: @fg_highlight;
+}
+*/
+
+.text-button label {
+  background-color: inherit;
+}
+
+button:focus label {
+  color: @fg_highlight;
+}
+
+button:focus {
   background-color: @bg_highlight;
 }
+
+/*
+ * 
+ * From the gnc-combott i've tried this as class, id, and element.  No luck.
+ *
+  gnc-id-combo-tooltip {
+    background-color: @bg_highlight;
+    color: @yellow;
+  }
+*/
