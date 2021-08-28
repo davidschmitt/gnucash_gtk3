@@ -300,6 +300,11 @@ toolbar toolbutton label {
   margin-bottom: 0px;
 }
 
+tab:checked, tab:checked label {
+  background-color: @bg_highlight;
+  color: @fg_highlight;
+}
+
 /* Dense Calendar Settings, use widget name gnc-id-dense-calendar
  * or gtk css name calendar which would also apply to other calendar
  * widgets */
